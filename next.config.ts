@@ -1,16 +1,8 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['ac.goit.global'],
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'https://notehub-api.goit.study/:path*',
-      },
-    ];
+    remotePatterns: [{ protocol: "https", hostname: "ac.goit.global" }],
   },
 };
 
