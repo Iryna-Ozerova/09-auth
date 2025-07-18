@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import NotesClient from "./Notes.client"
-import { fetchNotes } from "@/lib/api/clientApi"
+import { fetchNotes } from "@/lib/api/serverApi"
 import type { NotesResponse } from "@/types/note"
 
 type Props = {

@@ -89,7 +89,7 @@ export const checkSession = async () => {
 //getMe
 
 export const getMe = async () => {
-  const { data } = await nextServer.get<User>('/auth/me');
+  const { data } = await nextServer.get<User>('/users/me');
   return data;
 };
 

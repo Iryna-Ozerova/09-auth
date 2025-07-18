@@ -16,6 +16,7 @@ const SignUp = () => {
     try {
       const formValues = Object.fromEntries(formData) as RegisterRequest;
       const res = await register(formValues);
+      console.log("res", res);
       if (res) {
         setUser(res)
         router.push('/profile');
