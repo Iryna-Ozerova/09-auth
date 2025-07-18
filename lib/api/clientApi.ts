@@ -1,33 +1,12 @@
 import { nextServer } from "./api";
-import type { Note, NewNoteData } from "../../types/note";
+import type { Note, NewNoteData } from "@/types/note";
 
-export type User = {
-  id: string;
-  email: string;
-  username?: string;
-  avatar: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-export type RegisterRequest = {
-  username: string;
-  email: string;
-  password: string;
-};
-
-export type LoginRequest = {
-  email: string;
-  password: string;
-};
-
-export type ServerBoolResponse = {
-  success: boolean;
-};
-
-export type CheckSessionRequest = {
-  success: boolean;
-};
+import type {
+  User,
+  RegisterRequest,
+  LoginRequest,
+  CheckSessionRequest,
+} from "@/types/user";
 
 export interface FetchNotesResponse {
   notes: Note[];
