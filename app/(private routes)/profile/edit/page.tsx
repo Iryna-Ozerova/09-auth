@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
-import { getMe } from "@/lib/api/clientApi"
-import { useAuthStore } from "@/lib/store/authStore"
-import { nextServer } from "@/lib/api/api" 
-import css from "./EditProfile.module.css"
+import { updateProfile } from "@/lib/api/clientApi";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { getMe } from "@/lib/api/clientApi";
+import { useAuthStore } from "@/lib/store/authStore";
+import css from "./EditProfile.module.css";
 
 const EditProfile = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-    
+
   const [loading, setLoading] = useState(true);
 
   const setUser = useAuthStore((state) => state.setUser);
@@ -34,7 +34,7 @@ const EditProfile = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { data } = await nextServer.patch("/users/me", { username });
+    const data = await updateProfile({ username });
     if (data) {
       setUser(data);
       router.push("/profile");
@@ -68,7 +68,11 @@ const EditProfile = () => {
             <button type="submit" className={css.saveButton}>
               Save
             </button>
-            <button type="button" className={css.cancelButton} onClick={handleCancel}>
+            <button
+              type="button"
+              className={css.cancelButton}
+              onClick={handleCancel}
+            >
               Cancel
             </button>
           </div>

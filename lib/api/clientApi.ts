@@ -39,7 +39,7 @@ export const deleteNote = async (noteId: string): Promise<Note> => {
   return res.data;
 };
 
-export const fetchNoteById = async (id: number): Promise<Note> => {
+export const fetchNoteById = async (id: string): Promise<Note> => {
   const res = await nextServer.get<Note>(`/notes/${id}`);
   return res.data;
 };
@@ -70,6 +70,12 @@ export const checkSession = async () => {
 export const getMe = async () => {
   const { data } = await nextServer.get<User>("/users/me");
   return data;
+};
+
+//updateProfile
+export const updateProfile = async (data: { username: string }) => {
+  const res = await nextServer.patch<User>("/users/me", data);
+  return res.data;
 };
 
 //logout
